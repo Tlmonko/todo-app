@@ -1,11 +1,14 @@
 <template>
     <div id="app">
+        <LogInForm/>
     </div>
 </template>
 
 <script>
+	import LogInForm from "@/components/LogInForm";
 	export default {
 		name: 'App',
+		components: {LogInForm},
 		data() {
 		},
 	}

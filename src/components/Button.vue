@@ -1,12 +1,12 @@
 <template>
-    <Button>
-        {{ text }}
-    </Button>
+    <button :type="button.type">
+        {{ button.text }}
+    </button>
 </template>
 
 <script>
 	export default {
-		props: ['text']
+		props: ['button']
 	}
 </script>
 
@@ -25,6 +25,7 @@
         line-height: 21px;
         padding: $padding-top-bottom $padding-left-right;
         box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+        margin: 20px;
     }
     button:hover {
         box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);

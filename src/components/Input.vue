@@ -16,7 +16,7 @@
         background-color: $color;
         box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
         border-radius: 10px;
-        margin: 30px;
+        margin: 20px;
         border: none;
         font-family: 'Roboto', sans-serif;
         font-style: normal;
