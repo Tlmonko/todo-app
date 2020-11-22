@@ -1,19 +1,13 @@
 <template>
     <div id="app">
-    <Button v-bind:text="buttonText"/>
     </div>
 </template>
 
 <script>
-import Button from "@/components/Button";
 	export default {
 		name: 'App',
-        data () {
-			return {
-				buttonText: 'Login'
-            }
-        },
-		components: {Button}
+		data() {
+		},
 	}
 </script>
 
