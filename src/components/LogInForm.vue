@@ -45,6 +45,7 @@
 
     h2 {
         margin: 0 20px;
+        color: #323232;
     }
 
     Button {

@@ -15,6 +15,7 @@
     $padding-left-right: 130px;
     $padding-top-bottom: 16px;
     button {
+        color: #323232;
         background-color: $color;
         border-radius: 10px;
         border: none;
