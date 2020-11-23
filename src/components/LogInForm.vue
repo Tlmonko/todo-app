@@ -1,5 +1,5 @@
 <template>
-    <form action='/tasks'>
+    <form action='/todos'>
         <h2>Email</h2>
         <Input v-bind:input="inputEmail"/><br>
         <h2>Password</h2>
