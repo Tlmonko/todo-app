@@ -1,16 +1,15 @@
 <template>
     <div id="app">
-        <LogInForm/>
+        <Login/>
     </div>
 </template>
 
 <script>
-	import LogInForm from "@/components/LogInForm";
+	import Login from "@/views/Login";
+
 	export default {
 		name: 'App',
-		components: {LogInForm},
-		data() {
-		},
+		components: {Login},
 	}
 </script>
 
@@ -21,6 +20,5 @@
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
         color: #2c3e50;
-        margin-top: 60px;
     }
 </style>

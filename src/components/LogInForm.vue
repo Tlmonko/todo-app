@@ -1,36 +1,35 @@
 <template>
-    <div>
-        <form>
-            <h2>Email</h2>
-            <Input v-bind:input="inputEmail"/><br>
-            <h2>Password</h2>
-            <Input v-bind:input="inputPassword"/><br>
-            <Button v-bind:button="button"/>
-        </form>
-    </div>
+    <form action='/tasks'>
+        <h2>Email</h2>
+        <Input v-bind:input="inputEmail"/><br>
+        <h2>Password</h2>
+        <Input v-bind:input="inputPassword"/><br>
+        <Button v-bind:button="button"/>
+    </form>
 </template>
 
 <script>
 	import Input from "@/components/Input";
 	import Button from "@/components/Button";
+
 	export default {
 		components: {Button, Input},
-		data () {
+		data() {
 			return {
 				inputEmail: {
 					placeholder: 'Enter email...',
-                    type: 'text'
+					type: 'text'
 				},
 				inputPassword: {
 					placeholder: 'Enter password...',
 					type: 'password'
 				},
-                button: {
+				button: {
 					text: 'Login',
-                    type: 'submit'
-                }
-            }
-        },
+					type: 'submit'
+				}
+			}
+		},
 	}
 </script>
 
@@ -38,9 +37,7 @@
     form {
         text-align: left;
         margin: 20px 50px;
-    }
-    div {
-        text-align: center;
+        display: inline-block;
     }
 
     h2 {
