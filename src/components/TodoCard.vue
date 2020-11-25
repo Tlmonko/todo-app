@@ -31,8 +31,10 @@
     $card-width: 325px;
     $card-height: 150px;
     div {
+        position: relative;
         width: $card-width;
         height: $card-height;
+        min-height: 100%;
         box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
         border-radius: 9px;
         margin: 10px;
