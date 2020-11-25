@@ -42,7 +42,7 @@
 
     h3 {
         font-weight: bold;
-        font-size: 21px;
+        font-size: 18px;
         line-height: 25px;
         color: #323232;
         text-align: left;

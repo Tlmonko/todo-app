@@ -4,7 +4,8 @@
         <div v-bind:class="{displayNone: this.getNowCreatingTask, container: true}">
             <h1 class="Title">Tasks</h1>
             <div class="counter">
-                Completed tasks: {{ getComplitedTasks }}
+                <a class="complited-tasks">Completed tasks: </a>
+                {{ getComplitedTasks }}
             </div>
             <div class="main-container">
                 <TodoCard
@@ -56,6 +57,35 @@
         padding: 0;
     }
 
+    @media (max-width: 1320px) {
+        .main-container {
+            margin: 100px 150px;
+        }
+    }
+
+    @media (max-width: 1200px) {
+        .complited-tasks {
+            display: none;
+        }
+        .counter {
+            width: auto !important;
+            padding-left: 20px !important;
+            padding-right: 20px !important;
+        }
+    }
+
+    @media (max-width: 1030px) {
+        .main-container {
+            margin: 100px 50px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .main-container {
+            margin: 100px 0;;
+        }
+    }
+
     .Title {
         font-size: 48px;
         line-height: 56px;
@@ -64,14 +94,15 @@
     }
 
     .counter {
-        position: absolute;
+        z-index: 10;
+        position: fixed;
         background-color: #FFE3D3;
         width: 200px;
         padding: 10px;
         border-radius: 13px 0 0 13px;
         box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
         right: 0;
-        top: 6vw;
+        top: 6vh;
         font-family: 'Roboto', sans-serif;
         font-style: normal;
         font-weight: bold;
