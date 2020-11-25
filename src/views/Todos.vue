@@ -1,34 +1,39 @@
 <template>
-    <div class="container">
-        <h1 class="Title">Tasks</h1>
-        <div class="counter">
-            Completed tasks: {{ getComplitedTasks }}
-        </div>
-        <div class="main-container">
-            <TodoCard
-                    v-for="card of getTodos" :key="card"
-                    v-bind:Card="card"/>
-            <a class="new-task">
-                <div class="new-task-div">
+    <div>
+        <NewTask/>
+        <div v-bind:class="{displayNone: this.getNowCreatingTask, container: true}">
+            <h1 class="Title">Tasks</h1>
+            <div class="counter">
+                Completed tasks: {{ getComplitedTasks }}
+            </div>
+            <div class="main-container">
+                <TodoCard
+                        v-for="card of getTodos" :key="card"
+                        v-bind:Card="card"/>
+                <button class="new-task-div" v-on:click="this.changeState">
                     <div class="new-task-text">
                         <h1 class="plus">+</h1>
                         <p>Create new task</p>
                     </div>
-                </div>
-            </a>
+                </button>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
 	import TodoCard from "@/components/TodoCard";
-	import {mapGetters, mapActions} from 'vuex'
+	import {mapGetters, mapActions, mapMutations} from 'vuex'
+	import NewTask from "@/components/NewTask";
 
 	export default {
 		name: "Todos",
-		components: {TodoCard},
-		computed: mapGetters(['getTodos', 'getComplitedTasks']),
-		methods: mapActions(['fetchTodos']),
+		components: {NewTask, TodoCard},
+		computed: mapGetters(['getTodos', 'getComplitedTasks', 'getNowCreatingTask']),
+		methods: {
+			...mapActions(['fetchTodos']),
+			...mapMutations(['changeState'])
+		},
 		async mounted() {
 			this.fetchTodos()
 		}
@@ -38,6 +43,10 @@
 <style lang="scss" scoped>
     $card-width: 325px;
     $card-height: 150px;
+
+    .displayNone {
+        display: none !important;
+    }
 
     .main-container {
         display: flex;
@@ -123,5 +132,10 @@
 
     .new-task-div:hover {
         background-color: #F0F0F0;
+    }
+
+    button {
+        outline: none !important;
+        border: 0 !important;
     }
 </style>

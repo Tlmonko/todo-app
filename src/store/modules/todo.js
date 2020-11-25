@@ -19,17 +19,30 @@ export default {
 		updateTodos(state, todos) {
 			state.todos = todos
 		},
+		createTodo(state, todoText) {
+			let todoObject = {
+				id: state.todos.length,
+				text: todoText,
+				date: '5 november 2020'
+			}
+			state.todos.push(todoObject)
+		},
 		removeTodo(state, todoId) {
 			let filtered = state.todos.filter(function (todo) {
 				return todo.id !== todoId;
 			});
 			state.todos = filtered
 			state.complitedTasks += 1
+		},
+		changeState(state) {
+			state.nowCreatingTask = !state.nowCreatingTask
+			console.log(state.nowCreatingTask)
 		}
 	},
 	state: {
 		todos: [],
-		complitedTasks: 0
+		complitedTasks: 0,
+		nowCreatingTask: false
 	},
 	getters: {
 		getTodos(state) {
@@ -37,6 +50,9 @@ export default {
 		},
 		getComplitedTasks(state) {
 			return state.complitedTasks
+		},
+		getNowCreatingTask(state) {
+			return state.nowCreatingTask
 		}
 	},
 }
