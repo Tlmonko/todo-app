@@ -1,12 +1,20 @@
 <template>
-    <button :type="button.type" v-on:click="button.removeItem()">
+    <button :type="button.type" v-on:click="removeItem(button.id)">
         {{ button.text }}
     </button>
 </template>
 
 <script>
+	import {mapMutations} from 'vuex'
+
 	export default {
-		props: ['button']
+		props: ['button'],
+		methods: {
+			...mapMutations(['removeTodo']),
+            removeItem(itemId) {
+				this.removeTodo(itemId)
+            }
+		}
 	}
 </script>
 
@@ -30,9 +38,11 @@
         bottom: 5px;
         left: 5px;
     }
+
     button:hover {
         box-shadow: 0 1px 10px rgba(0, 0, 0, 0.08);
     }
+
     button:focus {
         outline: none;
     }

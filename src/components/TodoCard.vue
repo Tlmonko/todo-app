@@ -10,7 +10,7 @@
 	import CardButton from "@/components/CardButton";
 
 	export default {
-		props: ['Card', 'methods'],
+		props: ['Card'],
 		name: "TodoCard",
 		components: {CardButton},
 		data() {
@@ -18,9 +18,7 @@
 				button: {
 					text: 'Done',
 					type: '',
-					removeItem: () => {
-						this.methods.remove(this.Card.id)
-					}
+                    id: this.Card.id
 				}
 			}
 		}

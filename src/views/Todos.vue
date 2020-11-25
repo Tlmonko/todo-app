@@ -2,57 +2,27 @@
     <div class="container">
         <h1>Tasks</h1>
         <div class="counter">
-            Completed tasks: {{ this.variables.counter }}
+            Completed tasks: {{ getComplitedTasks }}
         </div>
         <div class="main-container">
             <TodoCard
-                    v-for="card of this.cards" :key="card"
-                    v-bind:Card="card"
-                    v-bind:methods="methods"/>
+                    v-for="card of getTodos" :key="card"
+                    v-bind:Card="card"/>
         </div>
     </div>
 </template>
 
 <script>
 	import TodoCard from "@/components/TodoCard";
+	import {mapGetters, mapActions} from 'vuex'
 
 	export default {
 		name: "Todos",
 		components: {TodoCard},
-		data() {
-			return {
-				methods: {
-					remove: (id) => {
-						let filtered = this.cards.filter(function (card) {
-							return card.id !== id;
-						});
-						this.cards = filtered
-						this.counter++
-					}
-				},
-				variables: {
-					counter: 0,
-				},
-				cards: []
-			}
-		},
+		computed: mapGetters(['getTodos', 'getComplitedTasks']),
+		methods: mapActions(['fetchTodos']),
 		async mounted() {
-			// console.log(1)
-			const res = await fetch('https://jsonplaceholder.typicode.com/todos?_limit=20')
-			const todos = await res.json()
-            // console.log(todos)
-			let result = []
-			for (let todo in todos) {
-				// console.log(todos[todo])
-				const newTodo = {
-					id: todos[todo].id,
-					text: todos[todo].title,
-					date: '5 november 2020'
-				}
-				result.push(newTodo)
-			}
-			// console.log(result)
-			this.cards = result
+			this.fetchTodos()
 		}
 	}
 </script>
