@@ -10,6 +10,9 @@
             <button class="my-btn" type="submit">
                 Create
             </button>
+            <a class="my-btn close-my-btn" v-on:click="close">
+                Close
+            </a>
         </form>
     </div>
 </template>
@@ -60,6 +63,11 @@
         transform: rotate(45deg);
     }
 
+    .close-my-btn {
+        margin-top: 20px !important;
+        display: none;
+    }
+
     .close:after {
         webkit-transform: rotate(-45deg);
         transform: rotate(-45deg);
@@ -73,6 +81,26 @@
         font-size: 48px;
         line-height: 56px;
         color: #323232;
+        margin: 0 150px;
+    }
+
+    @media (max-width: 700px) {
+        .close {
+            display: none;
+        }
+        h1 {
+            margin: 0;
+        }
+        .my-btn {
+            align-self: flex-end;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        .close-my-btn {
+            display: block;
+        }
     }
 
     $color: #FFFFFF;
@@ -82,10 +110,6 @@
     $color-btn: #FFE3D3;
     $padding-left-right-btn: 130px;
     $padding-top-bottom-btn: 16px;
-
-    h1 {
-        margin: 0 150px;
-    }
 
     .close-btn {
         width: 81px;
@@ -139,11 +163,17 @@
         outline: none;
     }
 
+    @media (min-width: 701px) {
+        form {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+
     form {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        padding-bottom: 100px;
+        margin-top: 50px;
+        height: 100vh;
     }
 
     div {

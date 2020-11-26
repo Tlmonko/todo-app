@@ -7,6 +7,9 @@
                 <a class="complited-tasks">Completed tasks: </a>
                 {{ getComplitedTasks }}
             </div>
+            <div class="floating-new-task" v-on:click="this.changeState">
+                <h1 class="plus-text">+</h1>
+            </div>
             <div class="main-container">
                 <TodoCard
                         v-for="card of getTodos" :key="card"
@@ -45,6 +48,32 @@
     $card-width: 325px;
     $card-height: 150px;
 
+    .floating-new-task {
+        z-index: 10;
+        position: fixed;
+        right: 30px;
+        bottom: 30px;
+        border-radius: 50%;
+        width: 70px;
+        height: 70px;
+        background-color: #FFE3D3;
+        align-content: center;
+        display: none;
+    }
+
+    .plus-text {
+        display: table-cell;
+        vertical-align: middle;
+        font-size: 40px;
+        font-weight: normal;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
     .displayNone {
         display: none !important;
     }
@@ -80,9 +109,17 @@
         }
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 815px) {
         .main-container {
             margin: 100px 0;;
+        }
+
+        .floating-new-task {
+            display: table;
+        }
+
+        .new-task-div {
+            display: none !important;
         }
     }
 
